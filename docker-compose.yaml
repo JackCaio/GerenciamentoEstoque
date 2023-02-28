@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  back-end:
+    image: node:16.14
+    container_name: estoqueAPI
+    tty: true # docker run -t
+    stdin_open: true # docker run -i
+    command: bash # comando rodado ao iniciar imagem
+    restart: on-failure
+    working_dir: /home/node/app
+    volumes:
+      - ./backend:/home/node/app
+    depends_on:
+      - database
+    ports:
+      - 3001:3000
+      - 3306:3306
+    environment:
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    networks:
+      - estoque_net
+
+  database:
+    container_name: estoqueDB
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - 3306:3306
+    networks:
+      - estoque_net
+    volumes:
+      - ./database:/var/lib/mysql
+
+networks:
+  estoque_net:
+    driver: bridge
