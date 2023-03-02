@@ -1,7 +1,7 @@
 /**
  * 
  * @param {import('sequelize').Sequelize} sequelize 
- * @param {*} DataTypes 
+  * @param {import('sequelize').DataTypes} DataTypes 
  */
 const GroupModel = (sequelize, DataTypes) => {
   const Group = sequelize.define(
@@ -17,6 +17,11 @@ const GroupModel = (sequelize, DataTypes) => {
       timestamps: false,
     }
   );
+
+  Group.associate = (models) => {
+    Group.hasMany(models.User,
+      { foreignKey: 'groupId', as: 'group' });
+  }
 
   // (async () => {
   //   await sequelize.sync();

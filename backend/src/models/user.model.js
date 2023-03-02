@@ -1,7 +1,7 @@
 /**
  * 
  * @param {import('sequelize').Sequelize} sequelize 
- * @param {*} DataTypes 
+ * @param {import('sequelize').DataTypes} DataTypes 
  */
 const UserModel = (sequelize, DataTypes) => {
   const User = sequelize.define(
@@ -22,6 +22,11 @@ const UserModel = (sequelize, DataTypes) => {
       underscored: true,
     }
   );
+
+  User.associate = (models) => {
+    User.belongsTo(models.Group,
+      { foreignKey: 'groupId', as: 'group' });
+  }
 
   // (async () => {
   //   await sequelize.sync();
