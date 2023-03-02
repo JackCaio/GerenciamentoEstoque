@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('Groups', {
+    await queryInterface.createTable('groups', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -13,22 +13,10 @@ module.exports = {
       name: {
         allowNull: false,
         type: Sequelize.STRING
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      deletedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
       }
     });
 
-    await queryInterface.createTable('Users', {
+    await queryInterface.createTable('users', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -50,19 +38,15 @@ module.exports = {
         onDelete: 'CASCADE',
         field: 'group_id',
         references: {
-          model: 'Groups',
+          model: 'groups',
           key: 'id',
         },
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      deletedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }
@@ -75,9 +59,9 @@ module.exports = {
      */
   },
 
-  async down (queryInterface, Sequelize) {
-    queryInterface.dropTable('Users');
-    queryInterface.dropTable('Groups');
+  async down (queryInterface, _Sequelize) {
+    queryInterface.dropTable('users');
+    queryInterface.dropTable('groups');
     /**
      * Add reverting commands here.
      *

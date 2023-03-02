@@ -3,43 +3,32 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('Groups', [
+    await queryInterface.bulkInsert('groups', [
       {
         name: 'Admin',
-        createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-        updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-        deletedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       {
         name: 'Gerente',
-        createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-        updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-        deletedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       {
         name: 'Empregado',
-        createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-        updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-        deletedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
       }
     ]);
 
-    await queryInterface.bulkInsert('Users', [
+    await queryInterface.bulkInsert('users', [
       {
         name: 'Roberto Russo',
         password: 'banana123',
         group_id: 1,
-        createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-        updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-        deletedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+        created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+        updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       {
         name: 'Ana Paula',
         password: 'potato123',
         group_id: 2,
-        createdAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-        updatedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
-        deletedAt: Sequelize.literal('CURRENT_TIMESTAMP'),
+        created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+        updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
     ])
     /**
@@ -54,6 +43,8 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('users', null, {});
+    await queryInterface.bulkDelete('groups', null, {});
     /**
      * Add commands to revert seed here.
      *

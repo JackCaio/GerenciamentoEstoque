@@ -8,5 +8,6 @@ app.get('/api', (_req, res) => {
   return res.status(200).json({message: 'Estoque ON'});
 });
 app.use('/api/user', routes.userRouter);
+app.use('/api/group', routes.groupRouter);
 
 module.exports = app;
