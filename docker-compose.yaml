@@ -12,7 +12,7 @@ services:
     volumes:
       - ./frontend:/app
     environment:
-      - REACT_APP_API_CONTAINER=backend
+      - REACT_APP_API_CONTAINER=http://backend:3001/api
     depends_on:
       - backend
     ports:
