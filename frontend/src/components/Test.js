@@ -5,10 +5,10 @@ export default function Test() {
   const apiUrl = process.env.REACT_APP_API_CONTAINER
 
   useEffect(() => {
-    // fetch('http://estoqueapi:3001/api/')
+    // fetch('http://backend:3001/api/')
     fetch(apiUrl)
-      .then(data => data.text())
-      .then(data => console.log(data))
+      .then(data => data.json())
+      .then(data => setMessage(data.message))
       .catch(error => console.error(error));
   }, []);
 
