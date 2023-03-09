@@ -23,10 +23,6 @@ const GroupModel = (sequelize, DataTypes) => {
       { foreignKey: 'groupId', as: 'group' });
   }
 
-  // (async () => {
-  //   await sequelize.sync();
-  // })();
-
   return Group;
 }
 

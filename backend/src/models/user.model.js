@@ -10,6 +10,7 @@ const UserModel = (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true
       },
       password: {
         type: DataTypes.STRING,
@@ -27,11 +28,6 @@ const UserModel = (sequelize, DataTypes) => {
     User.belongsTo(models.Group,
       { foreignKey: 'groupId', as: 'group' });
   }
-
-  // (async () => {
-  //   await sequelize.sync();
-  //   // await sequelize.sync({force: true}); // force true recria as tabelas sempre que o server reinicia, não usar em produção
-  // })();
 
   return User;
 };

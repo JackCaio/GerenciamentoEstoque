@@ -18,14 +18,14 @@ module.exports = {
     await queryInterface.bulkInsert('users', [
       {
         name: 'Roberto Russo',
-        password: 'banana123',
+        password: '$2b$10$NO8KdaBzINi3CdXqe1uUj.XnK/N1xjAuN7XhXJHw2mLPFfDjRvAfi', // 123456
         group_id: 1,
         created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
         updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       {
         name: 'Ana Paula',
-        password: 'potato123',
+        password: '$2b$10$GQl6q9ft.xwWo2dwT6bcJu3EYxR3uiwmdiPAhiLIyiZycPp81h5GG', // 123456
         group_id: 2,
         created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
         updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),

@@ -9,6 +9,20 @@ const getAll = async (_req, res) => {
   }
 }
 
+const userLogin = async (req, res, next) => {
+  try {
+    const {user, password} = req.body
+    const login = await userService.login(user, password);
+
+    req.userData = login;
+    next();
+  } catch (error) {
+    console.error(error);
+    res.status(error.status || 500).json({ error: error.message });
+  }
+}
+
 module.exports = {
   getAll,
+  userLogin,
 };

@@ -39,6 +39,7 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_HOST=database
+      - JWT_SECRET=${JWT_SECRET}
     networks:
       - estoque_net
 
